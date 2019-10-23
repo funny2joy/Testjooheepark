@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Homework4 {
     /*
     숙제 4. 아래와 같은 수열이 존재한다.
@@ -11,8 +13,31 @@ public class Homework4 {
      */
 
     public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+
+        System.out.println("몇 번 째 항까지 합칠까요?");
+        int num = in.nextInt();
+
         int Afirst = 1;
         int Asecond = 1;
         int Athird = 3;
+        int Acount = 0;
+        int Asum = 0;
+
+
+        int i = 1;
+        while (i ++ < num -3){
+
+            Acount= Afirst + Athird;
+            Afirst = Afirst + i ;
+            Athird = Athird + 3;
+            Acount += Acount;
+
+            System.out.println(Acount);
+
+
+
+        }
+
     }
 }

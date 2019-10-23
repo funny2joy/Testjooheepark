@@ -7,6 +7,8 @@ public class Prov1Ans {
 
          /* for 의 경우
             for(i = 1 ; i < 101; i++)
+
+            i= 1; 이라는 초기화는 while 에서 할 수 없다.
             while (i ++ < 101)
           */
          while (i ++ < 101){
