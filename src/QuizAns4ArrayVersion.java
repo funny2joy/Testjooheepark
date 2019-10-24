@@ -13,6 +13,7 @@ public class QuizAns4ArrayVersion {
      */
 
     public static void main(String[] args) {
+        //이름이 series 인 int 형 배열을 선언!
         int[] series;
 
         Scanner in = new Scanner(System.in);
@@ -20,12 +21,23 @@ public class QuizAns4ArrayVersion {
 
         int num = in.nextInt();
 
+        //실제 [num] 개수만큼 int 형 배열을 할당(메모리 할당)
         series = new int[num];
 
+        //메모리가 할당되었으므로 실제 데이터를 배치
         series[0] = 1;
         series[1] = 1;
         series[2] = 3;
 
+        /*1 1 3 4 5 8 12 17 25 37 ...
+          1 번째와 3번째를 더해서 4번째가 갱신됨
+          2 번째와 4번째를 더해서 5번째가 갱신됨
+          3번째와 5번째를 더해서 6번째가 갱신됨
+
+          배열의 인덱스는 0부터 시작한다는 것!
+          그러므로 1번째는 [0],2번째는 [1],3번째는 [2],
+          4번째는 [3], 5번째는 [4],6번째는 [5]를 기억하자!
+         */
         for(int i = 3; i < num ; i++){
 
             series[i] = series[i-3] + series[i-1];
