@@ -22,7 +22,9 @@ public class ProbSol {
 
         Random rand = new Random();
 
-        /* 현재까지의 구현은 공간 할당과 낭비된 공간을 표현한다.
+        /*결과 잘못나옴...선생님꺼 git에서 보기!!
+        //////////////////////////////////////////
+        현재까지의 구현은 공간 할당과 낭비된 공간을 표현한다.
            이 상태에서 추가적으로 처리해야하는 문제는 예로 아래와 같다.
            70000 이 입력된 경우 131072 를 할당한다.
            남은 공간은 51072 가 될 것이다.
@@ -50,7 +52,7 @@ public class ProbSol {
         for(int i = 0; i < MAXLEN; i++){
             // 1 ~131072
             int tmp = rand.nextInt(131072) + 1;
-            System.out.println("tmp = " + tmp);
+            System.out.println("first tmp = " + tmp);
             for(int j = 0; j < MAXIDX; j++){
                 if(tmp < START << j){
                     stor[j][idxCnt[j]] = tmp;
@@ -68,23 +70,56 @@ public class ProbSol {
                 remain = freeMem[i];
 
                 if((remain &~((START << j) - 1)) >= 4096) {
-                    freeArea[j][freeIdxCnt[j]] = START << j;
+                    freeArea[j][freeIdxCnt[j]++] = START << j;
                     freeMem[i] -= START << j;
                 }
 
+                /*디버깅 용도였으므로 주석처리함
                 System.out.println("remain= " + remain);
                 System.out.printf("freeMem[%d] = %d\n", i, freeMem[i]);
                 System.out.printf("freeMem[%d][%d] = %d\n\n", j, freeMem[j], freeArea[j][freeIdxCnt[j]]);
+                   */
 
 
-                freeIdxCnt[j]++;
             }
+        }
+
+        for(int i = 0; i < MAXLEN; i++){
+            for(int j = 0; j < MAXIDX; j++){
+                System.out.printf("freeArea[%d][%d] = [%d]\n", j, i,freeArea[j][i]);
+            }
+        }
 
 
+        /* stor[][] 배열에 설정된 것은 실제 할당된 것들
+           freeArea[][] 는 현재 빈 공간에 대한 정보
+           더 이상 stor[][] 에 공간이 부족하여
+           할당할 수 있는 상태가 아니라 가정.
+
+           그러므로 이제 다시 뭔가를 할당할 때
+           freeArea 에서 적절한 녀셕을 찾아서
+           배치하는 것을 확인하면 된다.
+         */
+
+        for(int i=0; i < MAXIDX; i++) {
+            System.out.printf("freeIdxCnt[%d] = %d\n", i, freeIdxCnt[i]);
         }
 
 
 
+        /*실제 랜덤값을 배치해보도록 한다 */
+        for(int i=0 ; i <3; i++){
+            // 1 ~32768
+            int tmp = rand.nextInt(32768) + 1;
+            System.out.printf("rand tmp = %d\n", tmp);
 
+            for(int j = 0; j < 4; j++){
+                if(tmp >> (12 >> j) <= 0){
+                    freeArea[j][freeIdxCnt[j]--] = 0;
+                    break;
+                }
+            }
+
+        }
     }
 }
