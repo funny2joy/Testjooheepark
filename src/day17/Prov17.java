@@ -39,9 +39,46 @@ package day17;
 import java.util.Scanner;
 
 class VariablePrint {
-    
+    int num1;
+    int num2;
+    float num3;
+    double num4;
 
+  public int getNum1(){return num1;}
+  public void setNum1(int num1){ this.num1 = num1;}
+
+  public int getNum2(){return num2;}
+  public void setNum2(int num2){ this.num2 = num2;}
+
+  public float getNum3(){return num3;}
+  public void setNum3(float num3){ this.num3 = num3;}
+
+  public double getNum4(){return num4;}
+  public void setNum4(double num4){ this.num4 = num4;}
+
+    @Override
+    public String toString() {
+        return "VariablePrint{" +
+                "num1=" + num1 +
+                ", num2=" + num2 +
+                ", num3=" + num3 +
+                ", num4=" + num4 +
+                '}';
+    }
 }
+
 public class Prov17 {
+    public static void main(String[] args) {
+        VariablePrint v = new VariablePrint();
+        v.setNum1(10);
+        v.setNum2(10);
+        v.setNum3(10);
+        v.setNum4(10);
+
+        System.out.println(v);
+
+        Scanner.
+
+    }
 
 }
