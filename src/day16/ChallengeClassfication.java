@@ -4,7 +4,7 @@ class FindFreequency{
     int len;
     int[] wirelessFreg;
 
-    
+
     public FindFreequency(int[] wf){
         int len = wf.length;
 
