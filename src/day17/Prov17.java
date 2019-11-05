@@ -39,31 +39,9 @@ package day17;
 import java.util.Scanner;
 
 class VariablePrint {
-    int a, b ;
-    float c ;
-    double d;
+    
 
-    public int getA() {
-        return a;
-    }
-
-    public int getB() {
-        return b;
-    }
-
-    public float getC() {
-        return c;
-    }
-
-    public double getD() {
-        return d;
-    }
 }
 public class Prov17 {
-    public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        System.out.println("숫자를 입력하세요");
-        int i = in.nextInt();
-        System.out.printf("", i);
-    }
+
 }
